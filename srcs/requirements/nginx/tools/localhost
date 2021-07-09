@@ -1,11 +1,3 @@
-server {
-	listen 80;
-	listen [::]:80;
-	
-	server_name localhost www.localhost;
-	return 301 https://$server_name$request_uri;
-}
-
 server{
 	listen 443 ssl ;
 	listen [::]:443 ssl ;
@@ -13,7 +5,8 @@ server{
 	ssl_certificate /root/mkcert/localhost.pem;
 	ssl_certificate_key /root/mkcert/localhost-key.pem;
 	ssl_protocols TLSv1.2 TLSv1.3;
-	root /var/www/wordpress;
+
+	root /var/www/html;
 
 	index index.php index.html index.htm index.nginx-debian.html;
 
@@ -24,8 +17,8 @@ server{
 		autoindex on;
 	}
 
-	location ~ \.php$ {
-		include snippets/fastcgi-php.conf;
-		fastcgi_pass wordpress:9000;
-	}
+	#location ~ \.php$ {
+	#	include snippets/fastcgi-php.conf;
+	#	fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+	#}
 }
