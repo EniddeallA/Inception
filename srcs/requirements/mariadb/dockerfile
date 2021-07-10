@@ -3,5 +3,5 @@ FROM debian:buster
 RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y wget mariadb-server
-COPY tools/start.sh .
-CMD sh start.sh
+COPY tart.sh .
+CMD ["sh", "start.sh"]
