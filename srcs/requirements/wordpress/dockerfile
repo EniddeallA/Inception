@@ -9,6 +9,7 @@ RUN tar -xvzf latest.tar.gz
 RUN mkdir -p /var/www/html/
 RUN mv wordpress/* /var/www/html/
 COPY wp-config.php /var/www/html/wp-config.php
+COPY www.conf /etc/php/7.3/fpm/pool.d/www.conf
 COPY start.sh .
 
 CMD ["sh", "start.sh"]
