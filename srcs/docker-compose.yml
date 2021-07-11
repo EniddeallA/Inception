@@ -30,12 +30,17 @@ services:
 
 networks: 
     wpsite:
+
 volumes:
     mariadb_data:
+        driver: local
         driver_opts:
                 type: 'none'
                 device: '/home/eniddealla/data/mysql'
+                o: bind
     wp_data:
+        driver: local
         driver_opts:
                 type: 'none'
                 device: '/home/eniddealla/data/wp'
+                o: bind
