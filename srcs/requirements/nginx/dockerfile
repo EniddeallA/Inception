@@ -3,10 +3,9 @@ FROM debian:buster
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get -y install wget
 RUN apt install nginx -y
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -subj '/C=FR/ST=x`75/L=Paris/O=42/CN=ashite' -keyout /etc/ssl/certs/localhost.key -out /etc/ssl/certs/localhost.crt
 
 COPY nginx.conf /etc/nginx/sites-available/default
 COPY start.sh .
 
 CMD ["sh", "start.sh"]
-
-#docker run -p 443:443 4c9

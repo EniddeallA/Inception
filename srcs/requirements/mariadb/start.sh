@@ -1,7 +1,6 @@
 service mysql start
 
-mysql -uroot -e "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';"
-mysql -uroot -e "CREATE DATABASE '$MYSQL_DB_NAME';"
-mysql -uroot -e "USE '$MYSQL_DB_NAME'; GRANT ALL PRIVILEGES ON * TO '$MYSQL_USER'@'%';"
-mysql -uroot -e "FLUSH PRIVILEGES;"
+mysql -u root -e "CREATE USER 'wp-user'@'%' IDENTIFIED BY '$MYSQL_PASSWORD'"
+mysql -u root -e "CREATE DATABASE wordpress"
+mysql -u root -e "USE wordpress; GRANT ALL PRIVILEGES ON * TO 'wp-user'@'%' WITH GRANT OPTION; FLUSH PRIVILEGES"
 mysqld_safe
