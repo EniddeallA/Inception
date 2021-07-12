@@ -2,35 +2,40 @@ version: "3"
 services:
     mariadb:
         build: ./requirements/mariadb
+        container_name: mariadb
         volumes:
             - mariadb_data:/var/lib/mysql
         restart: always
         networks: 
-            - wpsite
-        env_file: 
+            - wp
+        env_file:
             - .env
     nginx:
         build: ./requirements/nginx
+        container_name: nginx
         ports:
             - 443:443
         depends_on: 
             - wordpress
+        volumes:
+            - wp_data:/var/www/html
         networks: 
-            - wpsite
+            - wp
         restart: always
     wordpress:
         build: ./requirements/wordpress
+        container_name: wordpress
         depends_on: 
             - mariadb
         volumes:
             - wp_data:/var/www/html
         restart: always
         networks: 
-            - wpsite
+            - wp
 
 networks: 
-    wpsite:
-
+    wp:
+        driver: bridge
 volumes:
     mariadb_data:
         driver: local
