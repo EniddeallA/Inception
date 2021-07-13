@@ -2,6 +2,7 @@ version: "3"
 services:
     mariadb:
         build: ./requirements/mariadb
+        image: mariadb
         container_name: mariadb
         volumes:
             - mariadb_data:/var/lib/mysql
@@ -12,6 +13,7 @@ services:
             - .env
     nginx:
         build: ./requirements/nginx
+        image: nginx
         container_name: nginx
         ports:
             - 443:443
@@ -24,6 +26,7 @@ services:
         restart: always
     wordpress:
         build: ./requirements/wordpress
+        image: wordpress
         container_name: wordpress
         depends_on: 
             - mariadb
