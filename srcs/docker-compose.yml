@@ -44,11 +44,11 @@ volumes:
         driver: local
         driver_opts:
                 type: 'none'
-                device: '/home/eniddealla/data/mysql'
+                device: '/home/akhalid/data/mysql'
                 o: bind
     wp_data:
         driver: local
         driver_opts:
                 type: 'none'
-                device: '/home/eniddealla/data/wp'
+                device: '/home/akhalid/data/wp'
                 o: bind
